@@ -14,16 +14,16 @@ namespace TP_Nuisible
             this._ListHarmful = ListHarmful;
         }
 
-        public bool IsHarmfulDead()
+        public bool IsHarmfulAlive()
         {
             foreach (var OneHarmful in _ListHarmful)
             {
-                if (OneHarmful.IsDead())
+                if (OneHarmful.IsAlive())
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         public void Simulate()

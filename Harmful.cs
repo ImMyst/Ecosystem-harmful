@@ -55,9 +55,9 @@ namespace TP_Nuisible
                 }
             }
         }
-        public bool IsDead() 
+        public bool IsAlive() 
         {
-            return this._state == state.Dead;
+            return _state == state.Alive;
         }
 
         public void Collision(Harmful harmful)
