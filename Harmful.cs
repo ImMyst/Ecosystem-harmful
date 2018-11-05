@@ -85,5 +85,10 @@ namespace TP_Nuisible
         {
             return (this._position.X == harmful._position.X && this._position.Y == harmful._position.Y);
         }
+
+        public void startSimulation()
+        {
+            Console.WriteLine("Position :" + _position.X + "en X" + _position.Y + "en Y" + ", Etat :" + _state + ".");
+        }
     }
 }

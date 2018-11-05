@@ -27,5 +27,27 @@ namespace TP_Nuisible
             return false;
         }
 
+        public void Simulation()
+        {
+            foreach (var OneHarmful in _ListHarmful)
+            {
+                OneHarmful.Movements(_XMax, _YMax);
+            }
+
+            foreach (var FirstHarmful in _ListHarmful)
+            {
+                foreach (var SecondHarmful in _ListHarmful)
+                {
+                    if (FirstHarmful.IsSameCase(SecondHarmful) && FirstHarmful != SecondHarmful)
+                    {
+                        FirstHarmful.Collision(SecondHarmful);
+                    }
+                }
+            }
+            foreach (var OneHarmful in _ListHarmful)
+            {
+                OneHarmful.startSimulation();
+            }
+        }
     }
 }
