@@ -2,11 +2,18 @@
 
 namespace TP_Nuisible
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            RandomEcosystem randomEcosystem = new RandomEcosystem();
+            Ecosystem ecosystem = randomEcosystem.Create(5, 5, 10);
+
+            while (ecosystem.IsHarmfulDead())
+            {
+                ecosystem.Simulate();
+                Console.WriteLine("\n ********************************* \n");
+            }
         }
     }
 }

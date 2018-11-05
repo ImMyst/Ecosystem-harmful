@@ -6,11 +6,9 @@ namespace TP_Nuisible
     {   
         public enum state
         {
-            Dead = 0,
-            Alive = 1,
-            Rat,
-            Zombie,
-            Pigeon
+            Dead,
+            Alive,
+            Zombie
         }
         public state _state;
         public uint _speed;
@@ -33,7 +31,7 @@ namespace TP_Nuisible
                 return;
             }
 
-            for (uint i=0;i<_speed;i++)
+            for (uint i = 0; i < _speed; i++)
             {
                 var Direction = numberDirection.Next(1, 5);   // 1 = en haut, 2 = à droite, 3 = en bas, 4 = à gauche
 
@@ -81,14 +79,14 @@ namespace TP_Nuisible
             }
         }
 
+        public void showSpecs()
+        {
+            Console.WriteLine("Position: " + _position.X + " in X and " + _position.Y + " in Y;" + " Etat : " + _state.ToString());
+        }
+
         public bool IsSameCase(Harmful harmful)
         {
             return (this._position.X == harmful._position.X && this._position.Y == harmful._position.Y);
-        }
-
-        public void startSimulation()
-        {
-            Console.WriteLine("Position :" + _position.X + "en X" + _position.Y + "en Y" + ", Etat :" + _state + ".");
         }
     }
 }

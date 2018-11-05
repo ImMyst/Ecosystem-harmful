@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace TP_Nuisible
@@ -8,11 +7,11 @@ namespace TP_Nuisible
         private uint _XMax;
         private uint _YMax;
         private List<Harmful> _ListHarmful;
-        public Ecosystem(uint _XMax, uint _YMax, List<Harmful> _ListHarmful)
+        public Ecosystem(uint _XMax, uint _YMax, List<Harmful> ListHarmful)
         {
             this._XMax = _XMax;
             this._YMax = _YMax;
-            this._ListHarmful = _ListHarmful;
+            this._ListHarmful = ListHarmful;
         }
 
         public bool IsHarmfulDead()
@@ -21,32 +20,33 @@ namespace TP_Nuisible
             {
                 if (OneHarmful.IsDead())
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
-        public void Simulation()
+        public void Simulate()
         {
             foreach (var OneHarmful in _ListHarmful)
             {
                 OneHarmful.Movements(_XMax, _YMax);
             }
 
-            foreach (var FirstHarmful in _ListHarmful)
+            foreach (var OneHarmful in _ListHarmful)
             {
                 foreach (var SecondHarmful in _ListHarmful)
                 {
-                    if (FirstHarmful.IsSameCase(SecondHarmful) && FirstHarmful != SecondHarmful)
+                    if (OneHarmful.IsSameCase(SecondHarmful) && OneHarmful != SecondHarmful)
                     {
-                        FirstHarmful.Collision(SecondHarmful);
+                        OneHarmful.Collision(SecondHarmful);
                     }
                 }
             }
+            
             foreach (var OneHarmful in _ListHarmful)
             {
-                OneHarmful.startSimulation();
+                OneHarmful.showSpecs();
             }
         }
     }
