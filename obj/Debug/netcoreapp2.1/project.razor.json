@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "d:\\Cours\\3eme année\\Design Pattern\\TP Nuisible\\TP Nuisible.csproj",
+  "TargetFramework": "netcoreapp2.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
