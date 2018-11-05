@@ -7,12 +7,12 @@ namespace TP_Nuisible
         public static void Main(string[] args)
         {
             RandomEcosystem randomEcosystem = new RandomEcosystem();
-            Ecosystem ecosystem = randomEcosystem.Create(5, 5, 10);
+            Ecosystem ecosystem = randomEcosystem.Create(10, 10, 5);
 
             while (ecosystem.IsHarmfulDead())
             {
                 ecosystem.Simulate();
-                Console.WriteLine("\n ********************************* \n");
+                Console.WriteLine("\n*****************************************************************************\n");
             }
         }
     }

@@ -10,13 +10,15 @@ namespace TP_Nuisible
             Alive,
             Zombie
         }
+        public string _name;
         public state _state;
         public uint _speed;
         public Position _position;
 
-        public Harmful(uint X, uint Y, uint speed, state state) : this(new Position(X, Y), speed, state) {}
-        public Harmful(Position position, uint speed, state state)
-        {
+        public Harmful(string name, uint X, uint Y, uint speed, state state) : this(name, new Position(X, Y), speed, state) {}
+        public Harmful(string name, Position position, uint speed, state state)
+        {   
+            _name = name;
             _position = position;
             _speed = speed;
             _state = state;
@@ -60,6 +62,11 @@ namespace TP_Nuisible
 
         public void Collision(Harmful harmful)
         {
+            if (harmful._state == state.Dead || _state == state.Dead)
+            {
+                return;
+            }
+
             if (_state == state.Zombie)
             {
                 harmful._state = state.Zombie;
@@ -79,14 +86,14 @@ namespace TP_Nuisible
             }
         }
 
-        public void showSpecs()
-        {
-            Console.WriteLine("Position: " + _position.X + " in X and " + _position.Y + " in Y;" + " Etat : " + _state.ToString());
-        }
-
         public bool IsSameCase(Harmful harmful)
         {
             return (this._position.X == harmful._position.X && this._position.Y == harmful._position.Y);
+        }
+
+        public void showSpecs()
+        {
+            Console.WriteLine(_name + " at Position " + _position.X + " in X and Position " + _position.Y + " in Y;" + " His state is : " + _state.ToString());
         }
     }
 }
