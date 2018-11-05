@@ -5,9 +5,9 @@ namespace TP_Nuisible
 {
     public sealed class RandomEcosystem : IEcosystem
     {
-        public Ecosystem Create(uint XMax, uint YMax, uint nHarmful)
+        public Ecosystem Create(uint XMax, uint YMax, uint nHarmful)    // Random nuisibles
         {
-            var harmfuls = new List<Harmful>();
+            var Harmfuls = new List<Harmful>();
 
             Random random = new Random();
             
@@ -19,18 +19,18 @@ namespace TP_Nuisible
                 switch (random.Next(0, 3))
                 {
                     case 0:
-                        harmfuls.Add(new Pigeon(X,Y));
+                        Harmfuls.Add(new Pigeon(X,Y));
                         break;
                     case 1:
-                        harmfuls.Add(new Rat(X,Y));
+                        Harmfuls.Add(new Rat(X,Y));
                         break;
                     case 2:
-                        harmfuls.Add(new Zombie(X,Y));
+                        Harmfuls.Add(new Zombie(X,Y));
                         break;
                 }
             }
             
-            return new Ecosystem(XMax, YMax, harmfuls);
+            return new Ecosystem(XMax, YMax, Harmfuls);
         }
     }
 }

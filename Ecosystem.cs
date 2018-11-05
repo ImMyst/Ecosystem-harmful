@@ -13,8 +13,8 @@ namespace TP_Nuisible
             this._YMax = _YMax;
             this._ListHarmful = ListHarmful;
         }
-
-        public bool IsHarmfulAlive()
+        
+        public bool IsHarmfulAlive()        // Test si un nuisible est vivant et return true ou false
         {
             foreach (var OneHarmful in _ListHarmful)
             {
@@ -26,7 +26,7 @@ namespace TP_Nuisible
             return false;
         }
 
-        public void Simulate()
+        public void Simulate()      // Simule les mouvements et les collisions des nuisibles
         {
             foreach (var OneHarmful in _ListHarmful)
             {
@@ -44,9 +44,9 @@ namespace TP_Nuisible
                 }
             }
             
-            foreach (var OneHarmful in _ListHarmful)
+            foreach (var OneHarmful in _ListHarmful) // Affiche les résltats pour tous les nuisibles
             {
-                OneHarmful.showSpecs();
+                OneHarmful.showResults();
             }
         }
     }

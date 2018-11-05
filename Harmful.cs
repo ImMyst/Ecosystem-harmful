@@ -26,7 +26,7 @@ namespace TP_Nuisible
 
         public void Movements(uint XMax, uint YMax)
         {
-            Random numberDirection = new Random();
+            Random numberDirection = new Random(); // Random le nombre pour la direction
 
             if (_state == state.Dead)
             {
@@ -34,7 +34,7 @@ namespace TP_Nuisible
             }
 
             for (uint i = 0; i < _speed; i++)
-            {
+            {                                                 // Utilise le random pour choisir un nombre entre 1 et 5 non compris
                 var Direction = numberDirection.Next(1, 5);   // 1 = en haut, 2 = à droite, 3 = en bas, 4 = à gauche
 
                 if (Direction == 1 && _position.Y < YMax)
@@ -55,19 +55,19 @@ namespace TP_Nuisible
                 }
             }
         }
-        public bool IsAlive() 
+        public bool IsAlive()
         {
             return _state == state.Alive;
         }
 
-        public void Collision(Harmful harmful)
+        public void Collision(Harmful harmful) // Gère les collisions entre nuisibles lorsqu'ils sont sur la même case
         {
             if (harmful._state == state.Dead || _state == state.Dead)
             {
                 return;
             }
 
-            if (_state == state.Zombie)
+            if (_state == state.Zombie)     // Un nuisible applique le state et la vitesse du zombie si il est touché
             {
                 harmful._state = state.Zombie;
                 harmful._speed = Zombie._speed;
@@ -75,7 +75,7 @@ namespace TP_Nuisible
             else if (harmful._state != state.Zombie && this.GetType() != harmful.GetType())
             {
                 Random Kill = new Random();
-                if (Kill.Next(0,2) == 0)
+                if (Kill.Next(0,2) == 0)        // Random entre 0 et 2 non compris pour décider qui meurt entre le rat et le pigeon
                 {
                     harmful._state = state.Dead;
                 }
@@ -86,12 +86,12 @@ namespace TP_Nuisible
             }
         }
 
-        public bool IsSameCase(Harmful harmful)
+        public bool IsSameCase(Harmful harmful)   // Check que la position entre deux nuisibles est la même pour les collisions
         {
             return (this._position.X == harmful._position.X && this._position.Y == harmful._position.Y);
         }
 
-        public void showSpecs()
+        public void showResults()
         {
             Console.WriteLine(_name + " at Position " + _position.X + " in X and Position " + _position.Y + " in Y;" + " His state is : " + _state.ToString());
         }
